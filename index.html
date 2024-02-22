@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #resume-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="resume-container">
+        <h1 align="center">Resume Generator</h1>
+        <form id="resume-form">
+            <table>
+                <tr>
+                    <td><label for="name">Full Name:</label></td>
+                    <td><input type="text" id="name" required></td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="city">City:</label></td>
+                    <td><input type="text" id="city" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="email">Email Address:</label></td>
+                    <td><input type="email" id="email" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="phone">Phone Number:</label></td>
+                    <td><input type="tel" id="phone" required></td>
+                    <hr>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <h2>Education:</h2>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="degree">Degree Earned:</label></td>
+                    <td><input type="text" id="degree" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="institution">Institution Name:</label></td>
+                    <td><input type="text" id="institution" required></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h2>Work Experience:</h2>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="years">Professional Experience:</label></td>
+                    <td><input type="number" id="years" required></td>
+                </tr>
+                <tr>
+                    <td><label for="skills">Skills:</label></td>
+                    <td><input type="text" id="skills" required></td>
+                </tr>
+                <tr>
+                    <td><label for="projects">Project:</label></td>
+                    <td><input type="text" id="projects" required></td>
+                </tr>
+                <tr>
+                    <td><label for="achievement">Achievements:</label></td>
+                    <td><input type="text" id="achievement" required></td>
+                </tr>
+            </table>
+
+
+            <button type="button" onclick="generateResume()">Generate Resume</button>
+        </form>
+
+        <div id="generated-resume"></div>
+    </div>
+
+    <script>
+        function generateResume() {
+            const resumeData = {
+                name: document.getElementById('name').value,
+                achievement: document.getElementById('achievement').value,
+                skills: document.getElementById('skills').value,
+                project: document.getElementById('projects').value,
+                years: document.getElementById('years').value,
+                city: document.getElementById('city').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                degree: document.getElementById('degree').value,
+                institution: document.getElementById('institution').value
+            };
+
+            const generatedResume = document.getElementById('generated-resume');
+            generatedResume.innerHTML = `
+        <h1 align="center">Resume</h1>
+        <p>I am ${resumeData.name}, a highly motivated and detail-oriented professional residing in ${resumeData.city}.
+             With a comprehensive understanding of software, I bring a strong work ethic and a 
+             commitment to excellence. My proactive approach to challenges, along with effective communication
+              skills, has been honed through ${resumeData.years} years of experience
+              . Please feel free to contact me at ${resumeData.email} or ${resumeData.phone} to discuss how my background
+               aligns with the needs of your team.</p>
+
+        <h2>Education:</h2>
+        <ul><li>${resumeData.degree} in ${resumeData.institution}</li>
+            <li>degree1</li>
+            <li>degree2</li>
+            <li>degree3</li>
+                </ul>
+
+        <h2>Skills:</h2>
+        <ul>
+        <li>${resumeData.skills}</li>
+        <li>skill1</li>
+        <li>skill2</li>
+        <li>skill3</li>
+        </ul>
+        <h2>Projects:</h2><ul>
+        <li>${resumeData.project}</li>
+        <li>project1</li>
+        <li>project2</li>
+        <li>project3</li>
+         </ul>
+
+         <h2>Achievement:</h2><ul>
+        <li>${resumeData.achievement}</li>
+        <li>achievement1</li>
+        <li>achievement2</li>
+        <li>achievement3</li>
+         </ul>
+      `;
+        }
+    </script>
+
+</body>
+
+</html>
